@@ -45,7 +45,7 @@ def play():
                 elif scelta in azioni_disponibili:
                     
                     if scelta == "1":
-                        if not currentUser.stampa_aula("studenti.csv"):
+                        if not currentUser.stampa_ordinata("studenti.csv"):
                             print("ERRORE")
                         pass
                     

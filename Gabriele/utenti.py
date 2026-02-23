@@ -67,13 +67,15 @@ class Utente:
                 print(f"Nome {utenti["Nome"]} Cognome {utenti["Cognome"]} Corso {utenti["Corso"]}")
             return lista_utenti
         except FileNotFoundError as e:
-            print(f"Errore {e}")
-            return None
+            print("File non trovato. Creazione file vuoto")
+            df_vuoto = pd.DataFrame(columns=["Nome", "Cognome", "Corso"])
+            df_vuoto.to_csv(file, index=False)
+            return []
         except Exception as e:
             print(f"Si è verificato un errore {e}")
             return None
 
-    def stampa_aula(self, file):
+    '''def stampa_aula(self, file):
         studenti = []
         with open(file, "r") as file:
             contenuto = file.read(file)
@@ -81,7 +83,7 @@ class Utente:
                 splitted_riga = riga.strip().split(",")
                 studenti.append(splitted_riga)
         lista_ordinata = self.stampa_ordinata(file)
-        return lista_ordinata
+        return lista_ordinata'''
 
 
 
