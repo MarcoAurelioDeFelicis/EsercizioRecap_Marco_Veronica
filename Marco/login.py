@@ -1,29 +1,4 @@
-from Gabriele.main import Admin
-
-class Utente:
-    def __init__(self, username:str, password:str):
-        self.__username = username
-        self.__password = password
-        
-    # --- GETTER ---
-    def get_username(self):
-        return self.__username
-    
-    def get_password(self):
-        return self.__password
-
-    # --- SETTER ---
-    def set_password(self, nuova_pass):
-        if len(nuova_pass) > 3:
-            self.__password = nuova_pass
-        else:
-            print("Password troppo corta!")
-            
-    def modifica_studenti():
-        pass
-    def stampa_aula():
-        pass
-    
+from Gabriele.main import Admin, Utente
     
 def carica_utenti_da_txt(nome_file="utenti.txt"):
     lista_caricata = []
@@ -60,5 +35,3 @@ def login(lista_utenti):
     return None
 
     
-dbUsers = carica_utenti_da_txt()
-currentUser = login(dbUsers)
