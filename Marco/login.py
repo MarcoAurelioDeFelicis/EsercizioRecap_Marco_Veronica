@@ -1,4 +1,4 @@
-from Gabriele.main import Admin, Utente
+from Gabriele.utenti import Admin, Utente
     
 def carica_utenti_da_txt(nome_file="utenti.txt"):
     lista_caricata = []

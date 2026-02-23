@@ -89,7 +89,6 @@ class Utente:
 class Admin(Utente):
     def __init__(self):
         super().__init__("mirko", "123")
-
     
     def reset(self, motivazione:str):
         try:
@@ -110,11 +109,6 @@ class Admin(Utente):
             return f"Si è verificato un errore con l'apertura: {e}"
     
     def CreUtente(self,nome:str,password):
-        
-        
-        
-        
-        
         n_Utente = Utente(nome,password)
         
         try:
@@ -122,7 +116,6 @@ class Admin(Utente):
                 f.write({nome},{password})
         except FileNotFoundError as e :
             return f"Si è verificato un errore con l'apertura: {e}"
-        
-        
+    
         return n_Utente
             
