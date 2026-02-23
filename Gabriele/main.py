@@ -1,3 +1,4 @@
+
 '''Esercizio Recap
 Obiettivo
 Verificare la comprensione della gestione dei file in Python applicando le tre regole fondamentali:
@@ -27,22 +28,44 @@ from Veronica.main import Utente
 class Admin(Utente):
     def __init__(self):
         super().__init__("mirko", "123")
+       
 
     
     
     
     
     def reset(self, motivazione:str):
-        
-        with open("studenti.csv","w") as f:
-            f.write("Nome,Corso\n")
+        try:
+            with open("studenti.csv","w") as f:
+                f.write("Nome,Corso\n")
 
-        with  open("intervento_admin.txt","a") as s:
-            s.write(f"intervento:   {motivazione}\n")
+            with  open("intervento_admin.txt","a") as s:
+                s.write(f"intervento:   {motivazione}\n")
+            
+            return f"sistema resettato con log"
+        except PermissionError:
+            return "Errore: Permesso negato. Chiudi i file se sono aperti in Excel!"
+        except IOError as e:
+            return f"Errore di sistema durante la scrittura: {e}"
+        except Exception as e:
+            return f"Si è verificato un errore imprevisto: {e}"
+        except FileNotFoundError:
+            return f"Si è verificato un errore con l'apertura: {e}"
+    
+    def CreUtente(self,nome:str,password):
         
-        return f"sistema resettato con log"
-    
-    
-    
-    
-    
+        
+        
+        
+        
+        n_Utente = Utente(nome,password)
+        
+        try:
+            with open("utenti.txt", "a") as f:
+                f.write({nome},{password})
+        except FileNotFoundError as e :
+            return f"Si è verificato un errore con l'apertura: {e}"
+        
+        
+        return n_Utente
+            
