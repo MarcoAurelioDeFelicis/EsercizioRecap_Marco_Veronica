@@ -23,7 +23,7 @@ Stampa la lista deve stampare tutta l’aula ordinando gli studenti per corso.
 Creare una classe figlia di utente che è admin che può ressetare completamente la lista e non deve registrarsi ma solo accedere perché è hardcodato dentro il sistema; rimane un file txt chiamato intervento utente con la motivazione.'''
 
 
-from Veronica.main import Utente
+from Marco.login import Utente
 
 class Admin(Utente):
     def __init__(self):
