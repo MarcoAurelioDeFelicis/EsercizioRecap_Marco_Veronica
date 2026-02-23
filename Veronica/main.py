@@ -42,8 +42,7 @@ class Utente:
 
     def stampa_aula(self):
         with open("studenti.csv", "r") as file:
-            contenuto = file.read()
-        print(contenuto)
+            print(file.read())
 
 
 class Studente:
