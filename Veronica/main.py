@@ -25,7 +25,7 @@ class Utente:
         self.__username = username
         self.__password = password
     
-    def modifica_studenti(nome, cognome, newcorso):
+    def modifica_studenti(self,nome, cognome, newcorso):
         righe = []
         with open("studenti.csv", "r") as file:
             contenuto = file.read(file)
@@ -40,18 +40,11 @@ class Utente:
         with open("studenti.csv", "w") as file:
             writer = file.write(righe)
 
-    def stampa_aula():
+    def stampa_aula(self):
         with open("studenti.csv", "r") as file:
             contenuto = file.read()
         print(contenuto)
 
-
-class Admin(Utente):
-    def __init__(self):
-        super().__init__("mirko", "123")
-
-    def reset():
-        pass
 
 class Studente:
     def __init__(self, nome:str, cognome:str, corso:str):
