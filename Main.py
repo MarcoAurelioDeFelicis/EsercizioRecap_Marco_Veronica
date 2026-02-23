@@ -7,6 +7,7 @@ def play():
     while True :
         dbUsers = carica_utenti_da_txt()
         currentUser = login(dbUsers)
+        print(f"DEBUG: {dbUsers}")
         print(f"DEBUG: {currentUser}")
         
         if not currentUser:
@@ -20,7 +21,7 @@ def play():
             if isinstance(currentUser, Admin):
                                                     #unire |= o .update()
                 azioni_disponibili.update({
-                    "2": "Crea Alunno (CSV)", 
+                    "2": "Crea nuovo Utente", 
                     "3": "Reset"
                 })
             else:
@@ -42,26 +43,29 @@ def play():
                     break
                 
                 elif scelta in azioni_disponibili:
+                    
                     if scelta == "1":
                         if not currentUser.stampa_aula("studenti.csv"):
                             print("ERRORE")
                         pass
                     
                     elif scelta == "2":
-                        new_username = input("inserisci il nuovo username")
-                        new_password = input("inserisci nuova password")
+                        new_username = input("inserisci il nuovo username: ")
+                        new_password = input("inserisci nuova password: ")
                         
                         currentUser.CreUtente(new_username, new_password)
                         
                         if not currentUser:
                             print( "ERRORE: creazione non andata a buoin fine ")
                             
+                    elif scelta == "3":
+                        if not currentUser.reset():
+                            print("ERRORE: Reset")
+                            
                 else:
                     print("Scelta non valida.")
             
     
-
-
 
 
 if __name__ == "__main__":

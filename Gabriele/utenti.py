@@ -108,14 +108,18 @@ class Admin(Utente):
         except FileNotFoundError:
             return f"Si è verificato un errore con l'apertura: {e}"
     
-    def CreUtente(self,nome:str,password):
+    def CreUtente(self,nome:str,password:str):
         n_Utente = Utente(nome,password)
+        new_user = str(nome + " , " + password)
+        print(f"DEBUG: {new_user} TIPO: {type(new_user)}")
         
         try:
             with open("utenti.txt", "a") as f:
-                f.write({nome},{password})
+                f.write(new_user)
         except FileNotFoundError as e :
-            return f"Si è verificato un errore con l'apertura: {e}"
+            print(f"Si è verificato un errore con l'apertura: {e}")
+            with open("utenti.txt", "x") as f:
+                f.write(new_user)
     
         return n_Utente
             
